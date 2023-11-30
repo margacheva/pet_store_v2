@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Catalog/style.css') }}">
+    <title>PETTSTORE</title>
+</head>
+
+<body>
+<div class="wrapper">
+    {% extends 'Base/index.html' %}
+    {% block content %}
+
+    <h1 class="title">Каталог</h1>
+    <div class="content">
+        <div class="content__items">
+            {% for p in poop %}
+            <div class='item-block-wrapper'>
+                <div class='item-block'>
+                    {% if poop.photo %}
+                    <img class='item-block__image' src='data:image/jpeg;base64,{{ p.photo }}' alt='item'/>
+                    {% else %}
+                    <img class='item-block__image' src='static/not_photo_poop.jpg' alt='item'/>
+                    {% endif %}
+                    <h4 class='item-block__title'>Корм {{ p.name }}</h4>
+                    <div class='item-block__selector'>
+                        <ul>
+                            <li class="active">Маленький</li>
+                            <li>Большой</li>
+                        </ul>
+                        <ul>
+                            <li class="active">1кг</li>
+                            <li>10кг</li>
+                            <li>1000кг</li>
+                        </ul>
+                    </div>
+                    <div class='item-block__bottom'>
+                        <div class='item-block__price'>от {{p.price}}₽</div>
+                        <button class='button button--outline button--add'>
+                            <svg width='12' height='12' viewBox='0 0 12 12' fill='none'
+                                 xmlns='http://www.w3.org/2000/svg'>
+                                <path
+                                        d='M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z'
+                                        fill='white'/>
+                            </svg>
+                            <a href="{{ url_for('add_to_cart', product_id=p.id) }}">Добавить</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+</body>
+
+</html>

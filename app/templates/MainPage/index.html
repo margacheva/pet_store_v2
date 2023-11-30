@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='MainPage/style.css') }}">
+    <title>PETTSTORE</title>
+</head>
+
+<body>
+<div class="wrapper">
+    {% extends 'Base/index.html' %}
+    {% block content %}
+    <div class="content">
+        <div class="content__text-block">
+            <h1>Преимиальные корма для лучших друзей с доставкой на дом</h1>
+            <span>Добро пожаловать в наш интернет-магазин еды для ваших любимцев! Мы заботимся о здоровье и благополучии
+          ваших питомцев, поэтому предлагаем только качественную и полезную еду.</span>
+            <a href="{{ url_for('catalog') }}">
+                <div class="content__text-block__button">
+                    Каталог
+                </div>
+            </a>
+        </div>
+        <div class="content__img-block">
+            <img class="content__img-block__dog" src="static/MainPage/assets/bobik.png" alt="bobik">
+        </div>
+      <div class="content__cards">
+        <div class="content__cards__item">
+          <h1>Для собак</h1>
+          <img src="{{ url_for('static', filename='MainPage/assets/bobikCard.png') }}" alt="bobik">
+        </div>
+        <div class="content__cards__item cat">
+          <h1>Для котов</h1>
+          <img src="{{ url_for('static', filename='MainPage/assets/catik.png') }}" alt="catik">
+        </div>
+        <div class="content__cards__item fish">
+          <h1>Для рыбок</h1>
+          <img src="{{ url_for('static', filename='MainPage/assets/fishik.png') }}" alt="fishik">
+        </div>
+        <div class="content__cards__item grizun">
+          <h1>Для грызунков</h1>
+          <img src="{{ url_for('static', filename='MainPage/assets/grizunik.png') }}" alt="grizunik">
+        </div>
+      </div>
+    <form action="{{ url_for('contact') }}" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form">
+            <h1>Оставь свои данные для связи</h1>
+            {{ form.email.label }}
+            {{ form.email(type="text", placeholder="Введите почту") }}
+            {{ form.submit(type="submit", class="button form__button") }}
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+</div>
+</body>
+
+</html>

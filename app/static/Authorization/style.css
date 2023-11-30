@@ -1,0 +1,45 @@
+@import '../normalize.css';
+@import '../layout.css';
+
+.auth {
+	display: flex;
+	flex-direction: column;
+	width: clamp(300px, 40%, 417px);
+	align-items: center;
+	margin: 100px auto;
+}
+
+.auth h1 {
+	font-size: 32px;
+	font-weight: 800;
+	margin-bottom: 30px;
+}
+
+.auth input {
+	width: 90%;
+	height: 52px;
+	margin-top: 14px;
+
+	border-radius: 100px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background: #fff;
+
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.auth a {
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 30px;
+}
+
+.auth__button {
+	width: 40%;
+	margin-top: 30px;
+
+	font-size: 16px;
+	font-weight: 700;
+}
